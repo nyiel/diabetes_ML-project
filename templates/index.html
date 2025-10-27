@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diabetes Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    function validateForm() {
+      const fields = [
+        {name: "Pregnancies", min: 0, max: 20},
+        {name: "Glucose", min: 40, max: 300},
+        {name: "BloodPressure", min: 40, max: 130},
+        {name: "SkinThickness", min: 5, max: 80},
+        {name: "Insulin", min: 2, max: 300},
+        {name: "BMI", min: 10, max: 70},
+        {name: "DiabetesPedigreeFunction", min: 0.0, max: 2.5},
+        {name: "Age", min: 18, max: 122}
+      ];
+      for (let f of fields) {
+        const input = document.getElementsByName(f.name)[0];
+        const value = parseFloat(input.value);
+        if (isNaN(value) || value < f.min || value > f.max) {
+          alert(`${f.name} must be between ${f.min} and ${f.max}.`);
+          input.focus();
+          return false;
+        }
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <h1>🩺 Diabetes Prediction System</h1>
+      <p class="subtitle">Enter your health details below to check your diabetes risk.</p>
+
+      <form action="/predict" method="post" onsubmit="return validateForm();">
+        <div class="form-group">
+
+          <label>Pregnancies (0 - 20)</label>
+          <input type="number" step="1" name="Pregnancies" placeholder="Number of Pregnancies" min="0" max="20" required>
+
+          <label>Glucose Level (40 - 300 mg/dL)</label>
+          <input type="number" step="0.1" name="Glucose" placeholder="Glucose Level" min="40" max="300" required>
+
+          <label>Blood Pressure (40 - 130 mm Hg)</label>
+          <input type="number" step="0.1" name="BloodPressure" placeholder="Blood Pressure" min="40" max="130" required>
+
+          <label>Skin Thickness (5 - 80 mm)</label>
+          <input type="number" step="0.1" name="SkinThickness" placeholder="Skin Thickness" min="5" max="80" required>
+
+          <label>Insulin Level (2 - 300 μU/mL)</label>
+          <input type="number" step="0.1" name="Insulin" placeholder="Insulin Level" min="2" max="300" required>
+
+          <label>BMI (10 - 70 kg/m²)</label>
+          <input type="number" step="0.1" name="BMI" placeholder="Body Mass Index" min="10" max="70" required>
+
+          <label>Diabetes Pedigree Function (0.00 - 2.50)</label>
+          <input type="number" step="0.01" name="DiabetesPedigreeFunction" placeholder="Pedigree Function" min="0" max="2.5" required>
+
+          <label>Age (18 - 122 years)</label>
+          <input type="number" step="1" name="Age" placeholder="Age in years" min="18" max="122" required>
+        </div>
+
+        <button type="submit">Predict Diabetes Risk</button>
+      </form>
+
+      <footer>
+        <p>💡 System created by <strong>Kon James Ayuen (23-ML-005)</strong></p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
