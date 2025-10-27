@@ -82,33 +82,25 @@ Run the following commands to clone the project and navigate into its directory:
 ```bash
 git clone https://github.com/nyiel/diabetes_ML-project.git
 cd diabetes_ML-project
+
 🧱 Step 2: Create and Activate a Virtual Environment
 Set up a virtual environment to manage dependencies:
-
-bash
-Copy code
 python -m venv venv
 source venv/bin/activate     # On Mac/Linux
 venv\Scripts\activate        # On Windows
 
 📦 Step 3: Install Dependencies
 Install all required packages from the requirements.txt file:
-
-bash
-Copy code
 pip install -r requirements.txt
+
 🚀 Step 4: Run the Flask Application
 Start the Flask development server:
-
-bash
-Copy code
 python app.py
+
 🌐 Step 5: Open in Your Browser
 Visit the local development URL:
-
-cpp
-Copy code
 http://127.0.0.1:5000/
+
 🌍 Deployment on Render
 The system is deployed on Render using the following setup:
 
